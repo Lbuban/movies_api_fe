@@ -1,0 +1,33 @@
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">Delete Movie</a></li>
+</ol>
+
+<br/>
+
+<%- partial ('partials/statusmessage.ejs') %>
+
+<h2>Delete Movie</h2>
+
+<div style="text-align: center; padding-top:50px">
+  <form action="/delete" method="POST">
+    <div class="form-group">
+      <label for="film_id">SELECT A MOVIE TO DELETE</label><br/>
+      <select id="film_id" name="film_id">
+      <% if(typeof films != "undefined" && films.length > 0){ %>
+        <% films.forEach(function(film){ %>
+          <option value="<%= film.id %>">
+            <%= film.title %>
+          </option>
+        <% }) %>
+      <% } %>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger">
+        DELETE MOVIE
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,93 @@
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">Edit Movie</a></li>
+</ol>
+
+<br/>
+<%- partial ('partials/statusmessage.ejs') %>
+
+<form action="#" method="">
+  <div class="form-group">
+    <label for="film_id">SELECT A MOVIE TO UPDATE</label><br/>
+    <select id="film_id" name="film_id">
+    <% if(typeof films != "undefined" && films.length > 0){ %>
+      <% films.forEach(function(film){ %>
+        <option value="<%= film.id %>">
+          <%= film.title %>
+        </option>
+      <% }) %>
+    <% } %>
+    </select>
+  </div>
+</form>
+
+<form action="/update" class="form-horizontal" method="POST" id="updateFilmForm">
+  <input type="hidden" name="id" id="film" value="">
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Movie to update</legend>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="title">Movie Title*</label>
+      <div class="col-md-4">
+      <input id="title" name="title" type="text" placeholder="Movie Title" class="form-control input-md" required="">
+
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="genre">Genre</label>
+      <div class="col-md-4">
+      <input id="genre" name="genre" type="text" placeholder="Ex: Comedy" class="form-control input-md">
+
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="releaseYear">Year Released*</label>
+      <div class="col-md-4">
+      <input id="releaseYear" name="releaseYear" type="text" placeholder="Ex: 2000" class="form-control input-md">
+
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="runTime">Run Time</label>
+      <div class="col-md-4">
+      <input id="runTime" name="runTime" type="text" placeholder="Ex: 2h35min" class="form-control input-md">
+
+      </div>
+    </div>
+
+    <!-- Textarea -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="synopsis">Synopsis*</label>
+      <div class="col-md-4">
+        <textarea class="form-control" id="synopsis" name="synopsis"></textarea>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="poster">Poster</label>
+      <div class="col-md-4">
+      <input id="poster" name="poster" type="text" placeholder="URL of movie poster" class="form-control input-md">
+
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="submit">*Required</label>
+      <div class="col-md-4">
+        <button id="submit" name="submit" class="btn btn-primary">Update Movie</button>
+      </div>
+    </div>
+
+    </fieldset>
+    </form>
